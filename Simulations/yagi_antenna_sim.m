@@ -3,7 +3,14 @@
 %% Parameters
 freq = 435e6;
 c = 3e8;
-lambda = c/freq*0.943; 
+lambda = c/freq*0.943;
+spacing = c/freq;
+%% Aluminum boom 
+boom_d_round = 0.6* 19.05/1000; % meters
+%rods will be placed ontop on the boom via plastic instulation 
+%use a 35% factor of boom form the center
+correction = boom_d_round *0.35; 
+
 
 %% Driven Element
 myDrivenElement = dipole(Length=0.5*lambda, Width=0.00635, Tilt = 90, ... % Driven element length
@@ -14,21 +21,21 @@ yagiAntenna = yagiUda(...
     Exciter=myDrivenElement, ...
     NumDirectors=3, ...
     ReflectorLength=0.482*lambda, ... % Reflector Length
-    ReflectorSpacing=0.2*lambda, ...
+    ReflectorSpacing=0.2*spacing, ...
     DirectorLength=([0.428, 0.424, 0.428]*lambda), ... % Director Lengths
-    DirectorSpacing=[0.2, 0.2, 0.2]*lambda);
+    DirectorSpacing=[0.2, 0.2, 0.2]*spacing);
 
 %% Element Dimensions
 to_inches = 39.37;
 fprintf('\n=== 435MHz Yagi-Uda Element Dimensions ===\n');
 fprintf('\nElement lengths:\n');
-fprintf('Reflector          : %.4f in\n', 0.482*lambda*to_inches);
-fprintf('Driven             : %.4f in\n', 0.500*lambda*to_inches);
-fprintf('Director 1         : %.4f in\n', 0.428*lambda*to_inches);
-fprintf('Director 2         : %.4f in\n', 0.424*lambda*to_inches);
-fprintf('Director 3         : %.4f in\n', 0.428*lambda*to_inches);
+fprintf('Reflector          : %.4f in\n', 0.482*(lambda+correction)*to_inches);
+fprintf('Driven             : %.4f in\n', 0.500*(lambda+correction)*to_inches);
+fprintf('Director 1         : %.4f in\n', 0.428*(lambda+correction)*to_inches);
+fprintf('Director 2         : %.4f in\n', 0.424*(lambda+correction)*to_inches);
+fprintf('Director 3         : %.4f in\n', 0.428*(lambda+correction)*to_inches);
 fprintf('\nSpacings:\n');
-fprintf('Reflector spacing  : %.4f in\n', 0.2*lambda*to_inches);
+fprintf('Reflector spacing  : %.4f in\n', 0.2*spacing*to_inches);
 fprintf('Director spacing   : %.4f in\n', 0.2*lambda*to_inches);
 fprintf('Total boom length  : %.4f in\n', 0.8*lambda*to_inches);
 
