@@ -73,9 +73,16 @@ title('Smith Chart S[1,1]');
 
 %% Element Lengths
 
+L_reflector = (0.482+correction_factor)*lambda;
+L_driven = (0.466+correction_factor)*lambda;
+L_dir1 = (0.428 + correction_factor) * lambda;
+L_dir2 = (0.424 + correction_factor) * lambda;
+L_dir3 = (0.428 + correction_factor) * lambda;
+
 fprintf('Reflector:      %.2f in\n', L_reflector*39.3701);
 fprintf('Driven Element: %.2f in\n', L_driven*39.3701);
 fprintf('Director 1:     %.2f in\n', L_dir1*39.3701);
 fprintf('Director 2:     %.2f in\n', L_dir2*39.3701);
 fprintf('Director 3:     %.2f in\n', L_dir3*39.3701);
-fprintf('Boom Length:    %.2f in\n',0.2*lambda*39.3701);
+fprintf('Spacing:        %.2f in\n',0.2*lambda*39.3701);
+fprintf('Boom Length:    %.2f in\n',0.8*lambda*39.3701);
