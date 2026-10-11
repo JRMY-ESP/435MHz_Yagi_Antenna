@@ -34,7 +34,7 @@ figure(1);
 pattern(yagiAntenna,f);
 title("3D Radiation Pattern");
 
-% Azimuth radiation pattern (left/right)
+% Azimuth radiation pattern 
 figure(2);
 patternAzimuth(yagiAntenna,f);
 title("Azimuth Radiation Pattern");
