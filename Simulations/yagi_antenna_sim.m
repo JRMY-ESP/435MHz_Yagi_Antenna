@@ -48,7 +48,7 @@ title("Elevation Radiation Pattern");
 freq_range= linspace(400e6,500e6,101);
 figure(4);
 s = sparameters(yagiAntenna,freq_range);
-rfplot(s);
+rfplot(s,1,1);
 title("S[1,1] Return Loss");
 xlabel("Frequency (Hz)");
 ylabel("S[1,1] dB");
