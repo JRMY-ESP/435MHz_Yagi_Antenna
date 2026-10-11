@@ -60,17 +60,6 @@ title("VSWR");
 yline(2, 'r--', 'VSWR = 2');
 
 
-% Input impedance
-figure(6);
-impedance(yagiAntenna,freq_range);
-title("Input Impedance");
-
-% Smith chart
-figure(7);
-smithplot(s)
-title('Smith Chart S[1,1]');
-
-
 %% Element Lengths
 
 L_reflector = (0.482+correction_factor)*lambda;
